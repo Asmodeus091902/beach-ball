@@ -15,6 +15,7 @@
 		A605AE9C28521D8200D91A25 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A605AE9A28521D8200D91A25 /* Main.storyboard */; };
 		A605AE9E28521D8300D91A25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A605AE9D28521D8300D91A25 /* Assets.xcassets */; };
 		A605AEA128521D8300D91A25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A605AE9F28521D8300D91A25 /* LaunchScreen.storyboard */; };
+		A6CF18952858BF4E00ABF7D8 /* level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = A6CF18942858BF4E00ABF7D8 /* level1.sks */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +28,7 @@
 		A605AE9B28521D8200D91A25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A605AE9D28521D8300D91A25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A605AEA028521D8300D91A25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		A6CF18942858BF4E00ABF7D8 /* level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = level1.sks; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -61,6 +63,7 @@
 			children = (
 				A605AE9028521D8200D91A25 /* AppDelegate.swift */,
 				A605AE9228521D8200D91A25 /* GameScene.sks */,
+				A6CF18942858BF4E00ABF7D8 /* level1.sks */,
 				A605AE9428521D8200D91A25 /* Actions.sks */,
 				A605AE9628521D8200D91A25 /* GameScene.swift */,
 				A605AE9828521D8200D91A25 /* GameViewController.swift */,
@@ -133,6 +136,7 @@
 				A605AE9328521D8200D91A25 /* GameScene.sks in Resources */,
 				A605AE9E28521D8300D91A25 /* Assets.xcassets in Resources */,
 				A605AEA128521D8300D91A25 /* LaunchScreen.storyboard in Resources */,
+				A6CF18952858BF4E00ABF7D8 /* level1.sks in Resources */,
 				A605AE9528521D8200D91A25 /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
