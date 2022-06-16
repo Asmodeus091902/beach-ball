@@ -7,12 +7,15 @@
 
 import SpriteKit
 import GameplayKit
+var destroy = 0
 
 struct PhysicsCategory {
     static let none      : UInt32 = 0
     static let all       : UInt32 = UInt32.max
-    static let monster   : UInt32 = 0b1       // 1
+    static let monster   : UInt32 = 0b1    // 1
+    static var destroy   : UInt32 = 0b011
     static let projectile: UInt32 = 0b10      // 2
+    
 }
 func +(left: CGPoint, right: CGPoint) -> CGPoint {
     return CGPoint(x: left.x + right.x, y: left.y + right.y)
@@ -55,13 +58,20 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         // 2
-        backgroundColor = SKColor.white
+        let background = SKSpriteNode(imageNamed: "sand")
+         background.size = frame.size
+        background.position = CGPoint(x: frame.midX, y: frame.midY)
+         addChild(background)
         // 3
         player.position = CGPoint(x: 100, y: 100)
         
         //        player.position = CGPoint(x: size.width * 100, y: size.height * 100)
         // 4
         addChild(player)
+        addMonster()
+        physicsWorld.gravity = .zero
+        physicsWorld.contactDelegate = self
+
     }
     
     
@@ -137,29 +147,44 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         // Create sprite
         let monster = SKSpriteNode(imageNamed: "sand_castle")
         
-        // Determine where to spawn the monster along the Y axis
-        let actualY = random(min: monster.size.height/2, max: size.height - monster.size.height/2)
+     
         
         // Position the monster slightly off-screen along the right edge,
         // and along a random position along the Y axis as calculated above
-        monster.position = CGPoint(x: size.width + monster.size.width/2, y: actualY)
-        
+        monster.position = CGPoint( x: size.width * 0.85, y: size.height * 0.5)
         // Add the monster to the scene
         addChild(monster)
         
         // Determine speed of the monster
-        let actualDuration = random(min: CGFloat(2.0), max: CGFloat(4.0))
-        
-        // Create the actions
-        let actionMove = SKAction.move(to: CGPoint(x: -monster.size.width/2, y: actualY),
-                                       duration: TimeInterval(actualDuration))
-        let actionMoveDone = SKAction.removeFromParent()
-        monster.run(SKAction.sequence([actionMove, actionMoveDone]))
+      
         monster.physicsBody = SKPhysicsBody(rectangleOf: monster.size) // 1
         monster.physicsBody?.isDynamic = true // 2
         monster.physicsBody?.categoryBitMask = PhysicsCategory.monster // 3
         monster.physicsBody?.contactTestBitMask = PhysicsCategory.projectile // 4
         monster.physicsBody?.collisionBitMask = PhysicsCategory.none // 5}
+        monster.physicsBody?.affectedByGravity = false
+    }
+    func addDestroy() {
+        
+        // Create sprite
+        let destroy = SKSpriteNode(imageNamed: "Destroy")
+        
+     
+        
+        // Position the monster slightly off-screen along the right edge,
+        // and along a random position along the Y axis as calculated above
+        destroy.position = CGPoint( x: size.width * 0.85, y: size.height * 0.5)
+        // Add the monster to the scene
+        addChild(destroy)
+        
+        // Determine speed of the monster
+      
+        destroy.physicsBody = SKPhysicsBody(rectangleOf: destroy.size) // 1
+        destroy.physicsBody?.isDynamic = true // 2
+        destroy.physicsBody?.categoryBitMask = PhysicsCategory.monster // 3
+        destroy.physicsBody?.contactTestBitMask = PhysicsCategory.projectile // 4
+        destroy.physicsBody?.collisionBitMask = PhysicsCategory.none // 5}
+        destroy.physicsBody?.affectedByGravity = false
     }
         override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
             // 1 - Choose one of the touches to work with
@@ -196,7 +221,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 
                 
                 // 7 - Make it shoot far enough to be guaranteed off screen
-                let shootAmount = direction * 500
+                let shootAmount = direction * 800
                 
                 // 8 - Add the shoot amount to the current position
                 let realDest = shootAmount + projectile.position
@@ -212,6 +237,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             print("Hit")
             projectile.removeFromParent()
             monster.removeFromParent()
+            addDestroy()
+            destroy += 1
+            if destroy > 0  {
+              let reveal = SKTransition.flipHorizontal(withDuration: 0.5)
+              let gameOverScene = GameOverScene(size: self.size, won: true)
+              view?.presentScene(gameOverScene, transition: reveal)
+            }
+
+            
         }
         func didBegin(_ contact: SKPhysicsContact) {
             // 1

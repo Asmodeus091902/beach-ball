@@ -9,6 +9,8 @@ import UIKit
 import SpriteKit
 import GameplayKit
 
+var Gamelevel = 0
+
 class GameViewController: UIViewController {
     
     override func viewDidLoad() {
@@ -19,6 +21,8 @@ class GameViewController: UIViewController {
         if let view = self.view as? SKView {
             // Load the SKScene from 'GameScene.sks'
             let scene = GameScene(size: view.bounds.size)
+           let background = SKSpriteNode(imageNamed: "sand")
+          
             
             // Set the scale mode to scale to fit the window
             scene.scaleMode = .resizeFill
@@ -65,7 +69,7 @@ class GameViewController: UIViewController {
     
     override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
         if UIDevice.current.userInterfaceIdiom == .phone {
-            return .allButUpsideDown
+            return .landscape
         } else {
             return .all
         }

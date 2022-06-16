@@ -16,6 +16,7 @@
 		A605AE9E28521D8300D91A25 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A605AE9D28521D8300D91A25 /* Assets.xcassets */; };
 		A605AEA128521D8300D91A25 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A605AE9F28521D8300D91A25 /* LaunchScreen.storyboard */; };
 		A6CF18952858BF4E00ABF7D8 /* level1.sks in Resources */ = {isa = PBXBuildFile; fileRef = A6CF18942858BF4E00ABF7D8 /* level1.sks */; };
+		A6CF1899285A267300ABF7D8 /* game over 2.0.swift in Sources */ = {isa = PBXBuildFile; fileRef = A6CF1898285A267300ABF7D8 /* game over 2.0.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +30,7 @@
 		A605AE9D28521D8300D91A25 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A605AEA028521D8300D91A25 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A6CF18942858BF4E00ABF7D8 /* level1.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = level1.sks; sourceTree = "<group>"; };
+		A6CF1898285A267300ABF7D8 /* game over 2.0.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "game over 2.0.swift"; path = "../../game over 2.0.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +72,7 @@
 				A605AE9A28521D8200D91A25 /* Main.storyboard */,
 				A605AE9D28521D8300D91A25 /* Assets.xcassets */,
 				A605AE9F28521D8300D91A25 /* LaunchScreen.storyboard */,
+				A6CF1898285A267300ABF7D8 /* game over 2.0.swift */,
 			);
 			path = "beach ball";
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A6CF1899285A267300ABF7D8 /* game over 2.0.swift in Sources */,
 				A605AE9728521D8200D91A25 /* GameScene.swift in Sources */,
 				A605AE9928521D8200D91A25 /* GameViewController.swift in Sources */,
 				A605AE9128521D8200D91A25 /* AppDelegate.swift in Sources */,
